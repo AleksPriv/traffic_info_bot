@@ -27,8 +27,8 @@ To schedule the script to run automatically every Monday through Friday morning 
 crontab -e
 
 Append the following lines at the very bottom (adjust paths for your specific user environment):
-0,15,30 7 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/aco/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
-0,30 16-18 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/aco/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
+0,15,30 7 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/user/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
+0,30 16-18 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/user/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
 
 ## License
 This project is open-source and free to adapt for personal automation workflows. Keep your .env private!
