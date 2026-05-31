@@ -1,6 +1,6 @@
 Morning Traffic Info Telegram Bot
 
-A Python script designed to run headless on a Raspberry Pi. Every weekday morning, it calculates the optimal route from your home to your workplace using the modern **Google Routes API (v2)**, generates a custom route map with **live color-coded traffic segments** (Green/Orange/Red), and sends a neat summary image directly to your personal Telegram chat.
+A Python script designed to run headless on a Raspberry Pi. Every weekday, it calculates the optimal route from your home to your workplace and back using the modern **Google Routes API (v2)**, generates a custom route map with **live color-coded traffic segments** (Green/Orange/Red), and sends a neat summary image directly to your personal Telegram chat.
 
 ## Prerequisites
 1. **Google Cloud Platform Account:**
@@ -20,13 +20,15 @@ A Python script designed to run headless on a Raspberry Pi. Every weekday mornin
     TELEGRAM_CHAT_ID=your_personal_chat_id_here
     HOME_ADDRESS=e.g. 123 Main St, Your City, State
     WORK_ADDRESS=e.g. 456 Office Blvd, Business City, State
+    STATE_FILE_PATH = "/home/user/morning-bot/state.json"
 
 ## Automation (Crontab)
-To schedule the script to run automatically every Monday through Friday morning at 7:30 AM, open your system scheduler:
+To schedule the script to run automatically every Monday through Friday morning at 7:00, 7:15, 7:30 AM and from 4:00 to 6:30 pm in 30 min intervals, open your system scheduler:
 crontab -e
 
-Append the following line at the very bottom (adjust paths for your specific user environment):
-30 7 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/user/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
+Append the following lines at the very bottom (adjust paths for your specific user environment):
+0,15,30 7 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/aco/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
+0,30 16-18 * * 1-5 /home/user/morning-bot/venv/bin/python3 /home/aco/morning-bot/traffic_info.py >> /home/user/morning-bot/log.txt 2>&1
 
 ## License
 This project is open-source and free to adapt for personal automation workflows. Keep your .env private!
